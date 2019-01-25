@@ -1,0 +1,52 @@
+<h1>User info</h1>
+
+ <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+<% if @user.id == current_user.id %>
+<% end %>
+
+<table class="table">
+	<tbody>
+	<tr>
+		<th>name</th>
+		<th><%= @user.username %></th>
+	</tr>
+	<tr>
+		<th>introduction</th>
+		<th></th>
+	</tr>
+   </tbody>
+</table>
+
+<%= link_to 'edit', edit_user_path(@user.id), class: "btn btn-default" %>
+
+<h1>New book</h1>
+
+<%= render 'users/new',books: @book %>
+
+
+
+<table class="table">
+	<tbody>
+		<tr>
+			<td></td>
+			<td>Title</td>
+			<td>Opinion</td>
+		</tr>
+
+<% @books.each do |book| %>
+		<tr>
+			<td>
+<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+<% if @user.id == current_user.id %>
+<% end %>
+           </td>
+           <td>
+           	<%= book.title %>
+           </td>
+           <td>
+           	<%= book.body %>
+           </td>
+           </tr>
+       </tbody>
+
+<% end %>

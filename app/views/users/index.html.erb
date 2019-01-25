@@ -1,0 +1,65 @@
+
+<div class="body">
+<div class="container">
+
+
+
+<div class="row">
+	<div class="col-xs-3">
+<h1>User info</h1>
+
+ <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+<% if @user.id == current_user.id %>
+<% end %>
+
+<table class="table">
+	<tbody>
+	<tr>
+		<th>name</th>
+		<th><%= @user.username %></th>
+	</tr>
+	<tr>
+		<th>introduction</th>
+		<th><%= @user.introduction %></th>
+	</tr>
+   </tbody>
+</table>
+
+<%= link_to '', edit_user_path(@user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
+
+<h1>New book</h1>
+
+<%= render 'users/new',users: @user %>
+</div>
+
+<div class="col-xs-9">
+<h1>Users</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>image</th>
+			<th>name</th>
+			<th></th>
+		</tr>
+	</thead>
+
+<% @users.each do |user| %>
+       <tbody>
+		<tr>
+			<td>
+<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+<% if @user.id == current_user.id %>
+<% end %>
+           </td>
+           <td>
+           	<%= user.name %>
+           </td>
+           <td>
+           	<%= link_to "show", user_path(user.id), class: "user_#{@user.id}" %>
+           </td>
+           </tr>
+       </tbody>
+<% end %>
+</table>
+</div>
+</div>

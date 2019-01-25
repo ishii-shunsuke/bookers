@@ -1,0 +1,55 @@
+<h1>User info</h1>
+
+ <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+<% if @user.id == current_user.id %>
+<% end %>
+
+<table class="table">
+	<tbody>
+	<tr>
+		<th>name</th>
+		<th><%= @user.username %></th>
+	</tr>
+	<tr>
+		<th>introduction</th>
+		<th></th>
+	</tr>
+   </tbody>
+</table>
+
+<%= link_to 'edit', edit_user_path(@user.id), class: "btn btn-default" %>
+
+<h1>New book</h1>
+
+<%= render 'users/new',books: @book %>
+
+
+<h1>Book detail</h1>
+
+<table class="table">
+	<tbody>
+		<tr>
+			<td>
+<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+<% if @user.id == current_user.id %>
+<% end %>
+          <%= @user.username %>
+           </td>
+           <td>
+           	<%= @book.title %>
+           </td>
+           <td>
+           	<%= @book.body %>
+           </td>
+           <td>
+           	<%= link_to "Edit", edit_book_path(@book.id), class: "edit_#{@book.id}" %>
+           </td>
+           <td>
+             <%= link_to "Destroy", book_path, method: :delete,"data-confirm" => "本当に消しますか？", class: "destroy_#{@book.id}" %>
+           </td>
+
+       </tr>
+   </tbody>
+
+
+
