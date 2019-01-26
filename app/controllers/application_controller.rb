@@ -10,14 +10,17 @@ before_action :configure_permitted_parameters, if: :devise_controller?
  end
 
 def after_sign_in_path_for(resource)
+	flash[:sign_in] ="Signed in successfully."
 	user_path(current_user.id)
 end
 
 def after_sign_up_path_for(resource)
+	flash[:sign_up] ="Welcome! You have signed up successfully."
 	user_path(current_user.id)
 end
 
 def after_sign_out_path_for(resource)
+	flash[:sign_out] ="signed out successfully."
     root_path
 end
 end

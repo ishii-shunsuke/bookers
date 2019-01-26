@@ -1,6 +1,16 @@
+<div class="body">
+
+<div class="container">
+
+
+
+
+<div class="row">
+<div class="col-xs-3">
+
 <h1>User info</h1>
 
- <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+ <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %>
 <% if @user.id == current_user.id %>
 <% end %>
 
@@ -17,20 +27,24 @@
    </tbody>
 </table>
 
-<%= link_to 'edit', edit_user_path(@user.id), class: "btn btn-default" %>
+<div class="row">
+<%= link_to '', edit_user_path(@user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
+</div>
 
 <h1>New book</h1>
 
 <%= render 'users/new',books: @book %>
 
+</div>
 
+<div class="col-xs-9">
 <h1>Book detail</h1>
 
 <table class="table">
 	<tbody>
 		<tr>
 			<td>
-<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %><br>
 <% if @user.id == current_user.id %>
 <% end %>
           <%= @user.username %>
@@ -42,14 +56,16 @@
            	<%= @book.body %>
            </td>
            <td>
-           	<%= link_to "Edit", edit_book_path(@book.id), class: "edit_#{@book.id}" %>
+           	<%= link_to "Edit", edit_book_path(@book.id), class: "btn-sm btn-success edit_#{@book.id}" %>
            </td>
            <td>
-             <%= link_to "Destroy", book_path, method: :delete,"data-confirm" => "本当に消しますか？", class: "destroy_#{@book.id}" %>
+             <%= link_to "Destroy", book_path, method: :delete,"data-confirm" => "本当に消しますか？", class: "btn-sm btn-danger destroy_#{@book.id}" %>
            </td>
 
        </tr>
    </tbody>
 
-
-
+</table>
+</div>
+</div>
+</div>

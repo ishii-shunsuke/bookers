@@ -1,13 +1,25 @@
+<div class="body">
+	<div class="container">
+
+
+
+
 <h1>User info</h1>
 
 <%= form_for(@user) do |f| %>
 
-Name<%= f.text_field :username, class: "name" %>
-
-<p>Image</p>
+<div class="field">
+	<label for="user_name">Name</label>
+<%= f.text_field :username, class: "name" %>
+</div>
+<div class="field">
+<label for="user_image">Image</label>
 <%= f.attachment_field :profile_image, class: "user_image" %>
-
-Introduction<%= f.text_field :introduction, class: "introduction" %><br>
+</div>
+<div class="field">
+	<label for="user_introduction">Introduction</label>
+<%= f.text_field :introduction, class: "introduction" %>
+</div>
 
 
 
@@ -15,3 +27,5 @@ Introduction<%= f.text_field :introduction, class: "introduction" %><br>
 
 <% end %>
 
+</div>
+</div>

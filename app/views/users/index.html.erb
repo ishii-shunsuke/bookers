@@ -8,7 +8,7 @@
 	<div class="col-xs-3">
 <h1>User info</h1>
 
- <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+ <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "iuser_image", fallback: "no_image.jpg" %>
 <% if @user.id == current_user.id %>
 <% end %>
 
@@ -47,12 +47,12 @@
        <tbody>
 		<tr>
 			<td>
-<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %>
 <% if @user.id == current_user.id %>
 <% end %>
            </td>
            <td>
-           	<%= user.name %>
+           	<%= user.username %>
            </td>
            <td>
            	<%= link_to "show", user_path(user.id), class: "user_#{@user.id}" %>
