@@ -8,6 +8,18 @@
 
 <%= form_for(@user) do |f| %>
 
+<div class="alert">
+<% if @user.errors.any? %>
+<%= @user.errors.count %>error prohibited this obj from being saved:<br>
+        <% @user.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+</div>
+
+
+
+
 <div class="field">
 	<label for="user_name">Name</label>
 <%= f.text_field :username, class: "name" %>

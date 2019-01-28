@@ -1,7 +1,19 @@
 <div class="body">
 <div class="container">
 
+<div class="flash">
+<%= flash[:destroy] %>
+</div>
 
+
+<div class="alert">
+<% if @book.errors.any? %>
+<%= @book.errors.count %>error prohibited this obj from being saved:<br>
+        <% @book.errors.full_messages.each do |message| %>
+            <%= message %> <br>
+        <% end %>
+    <% end %>
+</div>
 
 <div class="row">
  <div class="col-xs-3">
@@ -19,7 +31,7 @@
 	</tr>
 	<tr>
 		<th>introduction</th>
-		<th></th>
+		<th><%= @user.introduction %></th>
 	</tr>
    </tbody>
 </table>
@@ -53,7 +65,7 @@
   <% end %>
            </td>
            <td>
-           	<%= link_to book.title, book_path(book.id), class: "boo_title" %>
+           	<%= link_to book.title, book_path(book.id), class: "book_title" %>
            </td>
            <td>
            	<%= book.body %>
