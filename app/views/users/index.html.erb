@@ -47,7 +47,8 @@
        <tbody>
 		<tr>
 			<td>
-<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %>
+
+<%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "user_image", fallback: "no_image.jpg",size: '40x40' %>
 <% if @user.id == current_user.id %>
 <% end %>
            </td>

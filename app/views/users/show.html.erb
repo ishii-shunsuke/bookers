@@ -18,8 +18,7 @@
 <h1>User info</h1>
 
  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %>
-<% if @user.id == current_user.id %>
-<% end %>
+
 
 <table class="table">
 	<tbody>
@@ -61,12 +60,10 @@
 	<tbody>
 		<tr>
 			<td>
-<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %>
-<% if @user.id == current_user.id %>
-<% end %>
+<%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "user_image", fallback: "no_image.jpg", size: '40x40' %>
            </td>
            <td>
-           	<%= book.title %>
+           	<%= link_to book.title, book_path(book.id), class: "book_#{@book.id}"%>
            </td>
            <td>
            	<%= book.body %>

@@ -21,7 +21,7 @@
 
  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %>
 <% if @user.id == current_user.id %>
-<% end %>
+
 
 <table class="table">
 	<tbody>
@@ -39,6 +39,7 @@
 <div class="row">
 <%= link_to '', edit_user_path(@user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
 </div>
+<% end %>
 <h1>New book</h1>
 
 <%= render 'users/new',books: @book %>
@@ -57,15 +58,16 @@
       </thead>
 
 <% @books.each do |book| %>
+
+
    <tbody>
 		<tr>
 			<td>
-<%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "user_imageg", fallback: "no_image.jpg" %>
-<% if @user.id == current_user.id %>
-  <% end %>
+<%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "user_imageg", fallback: "no_image.jpg" ,size: '40x40'%>
+
            </td>
            <td>
-           	<%= link_to book.title, book_path(book.id), class: "book_title" %>
+           	<%= link_to book.title, book_path(book.id), class: "book_#{@book.id}"%>
            </td>
            <td>
            	<%= book.body %>
