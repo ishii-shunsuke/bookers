@@ -5,7 +5,8 @@ class BooksController < ApplicationController
 
 
   def show
-   @book = Book.find(params[:id])
+   @book = Book.new
+   @book_show = Book.find(params[:id])
   end
 
   def create
@@ -13,7 +14,7 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.save
     flash[:update] = "successfully created.."
-    redirect_to book_path(@book.user.id)
+    redirect_to book_path(@book.id)
     else
       @user = current_user
       @books = Book.all

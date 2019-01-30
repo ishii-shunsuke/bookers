@@ -16,24 +16,24 @@
 
 <h1>User info</h1>
 
- <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %>
+ <%= attachment_image_tag @book_show.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %>
 
 
 <table class="table">
 	<tbody>
 	<tr>
 		<th>name</th>
-		<th><%= @book.user.username %></th>
+		<th><%= @book_show.user.username %></th>
 	</tr>
 	<tr>
 		<th>introduction</th>
-		<th><%= @book.user.introduction %></th>
+		<th><%= @book_show.user.introduction %></th>
 	</tr>
    </tbody>
 </table>
 
 <div class="row">
-<%= link_to '', edit_user_path(@book.user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{@book.user.id}" %>
+<%= link_to '', edit_user_path(@book_show.user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{@book_show.user.id}" %>
 </div>
 
 <h1>New book</h1>
@@ -50,19 +50,19 @@
   <tbody>
 		<tr>
 			<td>
-<%= attachment_image_tag @book.user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %><br>
+<%= attachment_image_tag @book_show.user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "user_image", fallback: "no_image.jpg" %><br>
 
-          <%= link_to @book.user.username, user_path(@book.user), class: "books" %>
+          <%= link_to @book_show.user.username, user_path(@book_show.user), class: "books" %>
            </td>
            <td>
-           	<%= @book.title %>
+           	<%= @book_show.title %>
            </td>
            <td>
-           	<%= @book.body %>
+           	<%= @book_show.body %>
            </td>
            <td>
-            <% if @book.user_id == current_user.id %>
-             	<%= link_to "Edit", edit_book_path(@book.id), class: "btn-sm btn-success edit_#{@book.id}" %>
+            <% if @book_show.user_id == current_user.id %>
+             	<%= link_to "Edit", edit_book_path(@book_show.id), class: "btn-sm btn-success edit_#{@book.id}" %>
              </td>
              <td>
                <%= link_to "Destroy", book_path, method: :delete,"data-confirm" => "本当に消しますか？", class: "btn-sm btn-danger destroy_#{@book.id}" %>
