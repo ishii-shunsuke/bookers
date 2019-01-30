@@ -62,7 +62,7 @@
            </td>
            <td>
             <% if @book_show.user_id == current_user.id %>
-             	<%= link_to "Edit", edit_book_path(@book_show.id), class: "btn-sm btn-success edit_book_#{@book.id}" %>
+             	<%= link_to "Edit", edit_book_path(@book_show.id), class: "btn-sm btn-success edit_book_#{@book_show.id}" %>
              </td>
              <td>
                <%= link_to "Destroy", book_path, method: :delete,"data-confirm" => "本当に消しますか？", class: "btn-sm btn-danger destroy_book_#{@book.id}" %>
